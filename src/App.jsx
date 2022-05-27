@@ -3,12 +3,14 @@ import logo from './logo.svg'
 import './App.css'
 
 function App() {
+  const [state, setState] = useState(false)
   const [count, setCount] = useState(0)
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('/api/helloWorld')
       const body = await response.json()
+      setState(true)
       console.log(body)
     }
 
@@ -20,6 +22,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
+        {state ? <p>API is working!</p> : <p>API is not working!</p>}
         <p>
           <button type="button" onClick={() => setCount((count) => count + 1)}>
             count is: {count}

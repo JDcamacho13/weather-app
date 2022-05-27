@@ -1,0 +1,30 @@
+{
+  "name": "weather-app",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@vitejs/plugin-react": "^1.3.0",
+    "vite": "^2.9.9"
+  },
+  "main": "vite.config.js",
+  "keywords": [],
+  "contributors": [
+    {
+      "name": "José Camacho",
+      "email": "j.d.camacho27@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "description": ""
+}

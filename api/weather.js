@@ -1,4 +1,5 @@
 import axios from "axios"
+import { getCountryName } from "./utils/getCountryName";
 
 const getTheCity = async (req) => {
 
@@ -17,9 +18,8 @@ const getTheCity = async (req) => {
 
   return axios.request(options).then(function (response) {
     const city = response.data.city
-    const country = response.data.countryISO2.toLowerCase()
-    console.log(`${city}, ${country}`)
-    return `${city},${country}`
+    const country = response.data.countryISO2
+    return { city, country }
   }).catch(function (error) {
     console.log(error);
   });
@@ -112,18 +112,18 @@ export default (req, res) => {
           "date": "2022-06-01 12:00:00"
         }
       ],
-      "city": "Maiquetia,ve"
+      "country": "Venezuela"
     })
 }
 
-const realDataResponse = async (req, res) => {
+const realDataApi = async (req, res) => {
   try {
-    const city = await getTheCity(req)
+    const { city, country } = await getTheCity(req)
 
     const results = {
       weatherToday: {},
       weatherForecast: [],
-      city: city
+      country: getCountryName(country)
     }
 
     const options = {

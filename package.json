@@ -9,7 +9,8 @@
   "dependencies": {
     "axios": "^0.27.2",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
@@ -23,6 +24,10 @@
     {
       "name": "José Camacho",
       "email": "j.d.camacho27@gmail.com"
+    },
+    {
+      "name": "Joalbert Milano",
+      "email": "joalbertmilano@gmail.com"
     }
   ],
   "license": "MIT",

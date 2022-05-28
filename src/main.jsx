@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import './index.css'
+import StyledGlobal from "./styles/StyledGlobal"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <StyledGlobal />
     <App />
   </React.StrictMode>
 )

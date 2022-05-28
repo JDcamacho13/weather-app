@@ -6,8 +6,9 @@ function App() {
   const [count, setCount] = useState(0)
 
   useEffect(() => {
+    // this way we can call the api
     const fetchData = async () => {
-      const response = await fetch('/api/helloWorld')
+      const response = await fetch(`/api/weather`)
       const body = await response.json()
       console.log(body)
     }

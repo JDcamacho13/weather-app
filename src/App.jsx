@@ -7,7 +7,7 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('/api/helloWorld')
+      const response = await fetch(`/api/weather`)
       const body = await response.json()
       console.log(body)
     }

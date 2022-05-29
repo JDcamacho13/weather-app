@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-import { keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 const animation = keyframes`
   0%, 40%, 100% { 
@@ -11,9 +10,14 @@ const animation = keyframes`
 `
 
 export const Container = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
   display: grid;
   place-content: center;
   height: 100vh;
+  width: 100vw;
+  background-color: white;
 `
 
 export const Spinner = styled.div`
@@ -24,32 +28,14 @@ export const Spinner = styled.div`
   font-size: 10px;
 
   & > div {
-    background-color: #fff;
+    background-color: #023e8a;
     margin: 0 2px;
     height: 100%;
     width: 6px;
     display: inline-block;
   }
 `
-export const Rect1 = styled.div`
+export const Rect = styled.div`
   animation: ${animation} 1.2s infinite ease-in-out;
-`
-
-export const Rect2 = styled.div`
-  animation: ${animation} 1.2s infinite ease-in-out;
-  animation-delay: -1.1s;
-`
-
-export const Rect3 = styled.div`
-  animation: ${animation} 1.2s infinite ease-in-out;
-  animation-delay: -1.0s;
-`
-
-export const Rect4 = styled.div`
-  animation: ${animation} 1.2s infinite ease-in-out;
-  animation-delay: -0.9s;
-`
-export const Rect5 = styled.div`
-  animation: ${animation} 1.2s infinite ease-in-out;
-  animation-delay: -0.8s;
+  animation-delay: ${({ delay }) => '-' + delay + 's'};
 `

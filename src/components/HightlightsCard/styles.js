@@ -7,20 +7,19 @@ export const Container = styled.div`
     justify-content: center;
     padding: 8px;
     border-radius: 6px;
-    background-color: #114da0;
+    background-color: ${({ theme }) => theme.colors.cards};
     text-align: center;
     color: white;
-
-    /* @media ${device.tablet} {
-        width: 225px;
-        place-self: center;
-    } */
 `
 
 export const NumberContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media ${device.laptop} {
+        font-size: 24px;
+    }
 `
 
 export const Number = styled.span`
@@ -29,5 +28,9 @@ export const Number = styled.span`
 
     @media ${device.tablet} {
         font-size: 54px;
+    }
+
+    @media ${device.laptop} {
+        font-size: 68px;
     }
 `

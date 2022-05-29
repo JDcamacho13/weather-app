@@ -8,7 +8,7 @@ export const Item = styled.li`
     padding: 8px;
     list-style: none;
     border-radius: 6px;
-    background-color: #114da0;
+    background-color: ${({ theme }) => theme.colors.cards};
     text-align: center;
 `
 

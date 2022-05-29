@@ -1,0 +1,89 @@
+{
+    "data": {
+        "morning": {
+            "colors": {
+                "body": "linear-gradient(#023e8a, #8ecae6 60%, #e9c46a);", 
+                "cards": "#22577a", 
+                "aside": "#2a6f97"
+            }, 
+            "images": {
+                "montains": "montains-morning",
+                "sky": {
+                    "desktop": "clouds-desktop",
+                    "mobile": "clouds-mobile"
+                },
+                "sunMoon": {
+                    "name": "sun-morning",
+                    "position": {
+                        "top": "calc(100% - 250px)", 
+                        "left": "2.5%"
+                    }
+                }
+            }
+        },
+        "afternoon": {
+            "colors": {
+                "body": "linear-gradient(#219ebc, #9bf6ff);",
+                "cards": "#495057", 
+                "aside": "#595959"
+            }, 
+            "images": {
+                "montains": "montains-afternoon",
+                "sky": {
+                    "desktop": "clouds-desktop",
+                    "mobile": "clouds-mobile"
+                },
+                "skyFixed": "clouds-group",
+                "sunMoon": {
+                    "name": "sun-afternoon",
+                    "position": {
+                        "top": "10%", 
+                        "left": "60%"
+                    }
+                }
+            }
+        }, 
+        "evening": {
+            "colors": {
+                "body": "linear-gradient(#6930c3, #ffadad 70%, #f9c74f);",
+                "cards": "#f9844a", 
+                "aside": "#6a040f"
+            }, 
+            "images": {
+                "montains": "montains-evening",
+                "sky": {
+                    "desktop": "clouds-desktop",
+                    "mobile": "clouds-mobile"
+                },
+                "sunMoon": {
+                    "name": "sun-evening",
+                    "position": {
+                        "top": "calc(100% - 275px)", 
+                        "left": "50%"
+                    }
+                }
+            }
+        }, 
+        "night": {
+            "colors": {
+                "body": "linear-gradient(#3a0ca3, #7209b7 50%, #90caf9);",
+                "cards": "#001d3d", 
+                "aside": "#012a4a"
+            }, 
+            "images": {
+                "montains": "montains-night",
+                "sky": {
+                    "desktop": "stars-desktop",
+                    "mobile": "stars-mobile"
+                },
+                "sunMoon": {
+                    "name": "moon",
+                    "position": {
+                        "top": "10%", 
+                        "left": "60%"
+                    }
+                }
+            }
+        }
+    }
+}

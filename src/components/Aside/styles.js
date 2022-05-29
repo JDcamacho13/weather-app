@@ -8,9 +8,16 @@ export const Container = styled.div`
     gap: 16px;
     overflow-x: hidden;
     padding: 16px;
+    background-color: ${({ theme }) => theme.colors.aside};
 
     @media ${device.tablet} {
         grid-column: span 2;
+        background-color: transparent;
+    }
+
+    @media ${device.laptop} {
+        padding: 42px;
+        gap: 42px;
     }
 `
 export const Title = styled.h2`

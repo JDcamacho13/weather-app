@@ -5,7 +5,7 @@ export const SunMoon = styled.div`
   position: absolute;
   top: ${({ theme }) => theme.images.sunMoon.position.top};
   left: ${({ theme }) => theme.images.sunMoon.position.left};;
-  background-image: ${({ theme }) => `url('/src/assets/images/${theme.images.sunMoon.name}.png')`};
+  background-image: ${({ theme }) => `url('/images/${theme.images.sunMoon.name}.png')`};
   background-size: contain;
   background-position: center;
   width: 200px;
@@ -22,7 +22,7 @@ export const Container = styled.div`
     justify-items: center;
     padding: 16px;
     color: white;
-    background-image: ${({ theme }) => `url('/src/assets/images/${theme.images.montains}.png')`};
+    background-image: ${({ theme }) => `url('/images/${theme.images.montains}.png')`};
     background-size: 768px;
     background-repeat: no-repeat;
     background-position: bottom;

@@ -1,9 +1,9 @@
 import styled, { keyframes } from 'styled-components'
 
 const size = {
-    tablet: '768px',
-    laptop: '1024px',
-    desktop: '2560px'
+  tablet: '768px',
+  laptop: '1024px',
+  desktop: '2560px'
 }
 
 const moveLeftDesktop = keyframes`
@@ -34,7 +34,7 @@ export const Container = styled.div`
     position: relative;
     display: grid;
     grid-template-rows: 100vh min-content;
-    background-image: ${({ theme }) => `url('/src/assets/images/${theme.images.montains}.png')`};
+    background-image: ${({ theme }) => `url('/images/${theme.images.montains}.png')`};
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
@@ -44,7 +44,7 @@ export const Container = styled.div`
         position: absolute;
         width: 100%;
         height: 100%;
-        background-image: ${({ theme }) => `url('/src/assets/images/${theme.images.sky.mobile}.png')`};
+        background-image: ${({ theme }) => `url('/images/${theme.images.sky.mobile}.png')`};
         background-size: contain;
         background-position: center;
         top: 0;
@@ -52,7 +52,7 @@ export const Container = styled.div`
         z-index: -1;
 
         @media ${device.tablet} {
-          background-image: ${({ theme }) => `url('/src/assets/images/${theme.images.sky.desktop}.png')`};
+          background-image: ${({ theme }) => `url('/images/${theme.images.sky.desktop}.png')`};
           animation: ${moveLeftDesktop} 400s infinite linear;
         }
     }
@@ -69,7 +69,7 @@ export const Container = styled.div`
           background-position: bottom;
           top: 0;
           z-index: -1;
-          background-image: url("/src/assets/images/${theme.images.skyFixed}.png")};
+          background-image: url("/images/${theme.images.skyFixed}.png")};
         `
       }
     }

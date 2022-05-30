@@ -30,7 +30,7 @@ export const Number = styled.span`
         font-size: 54px;
     }
 
-    @media ${device.laptop} {
+    @media ${device.desktop} {
         font-size: 68px;
     }
 `

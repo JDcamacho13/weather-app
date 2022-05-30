@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Item = styled.li`
+    font-size: 16px;
     min-width: 100px;
     flex: 1 1;
     display: flex;

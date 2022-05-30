@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from '../../styles/styles'
 
 export const Item = styled.li`
     font-size: 16px;

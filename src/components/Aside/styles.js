@@ -16,6 +16,11 @@ export const Container = styled.div`
     }
 
     @media ${device.laptop} {
+        padding: 32px;
+        gap: 32px;
+    }
+
+    @media ${device.desktop} {
         padding: 42px;
         gap: 42px;
     }

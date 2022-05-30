@@ -1,4 +1,4 @@
-import { Container } from './styles'
+import { Container, SunMoon } from './styles'
 import { Header } from '../Header'
 import { WeatherIcon } from '../WeatherIcon'
 import { Temperature } from '../Temperature'
@@ -8,6 +8,7 @@ import { Date } from '../Date'
 export const Main = () => {
     return (
         <Container>
+            <SunMoon />
             <Header />
             <WeatherIcon />
             <Temperature />

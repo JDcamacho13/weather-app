@@ -1,14 +1,14 @@
-import { Container, Spinner, Rect2, Rect3, Rect4, Rect5, Rect1 } from './styles';
+import { Container, Spinner, Rect } from './styles';
 
 export const Loading = () => {
   return (
     <Container>
       <Spinner>
-        <Rect1 />
-        <Rect2 />
-        <Rect3 />
-        <Rect4 />
-        <Rect5 />
+        <Rect delay={0} />
+        <Rect delay={1.1} />
+        <Rect delay={1.0} />
+        <Rect delay={0.9} />
+        <Rect delay={0.8} />
       </Spinner>
     </Container>
   )

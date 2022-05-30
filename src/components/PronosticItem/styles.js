@@ -1,6 +1,8 @@
 import styled from 'styled-components'
+import { device } from '../../styles/styles'
 
 export const Item = styled.li`
+    font-size: 16px;
     min-width: 100px;
     flex: 1 1;
     display: flex;
@@ -8,7 +10,7 @@ export const Item = styled.li`
     padding: 8px;
     list-style: none;
     border-radius: 6px;
-    background-color: #114da0;
+    background-color: ${({ theme }) => theme.colors.cards};
     text-align: center;
 `
 

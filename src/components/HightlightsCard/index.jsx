@@ -1,13 +1,18 @@
-import { Container, NumberContainer, Number } from './styles'
+import { Container, NumberContainer, Number, ProgressBar, BarContainer } from './styles'
 
-export const HightlightsCard = ({ name, value, unit }) => {
+export const HightlightsCard = ({ name, value, unit, barProgress = false }) => {
     return (
         <Container>
-            <span>{ name }</span>
+            <span>{name}</span>
             <NumberContainer>
-                <Number>{ value }</Number>
-                <span>{ unit }</span>
+                <Number>{value}</Number>
+                <span>{unit}</span>
             </NumberContainer>
+            {barProgress &&
+                <BarContainer>
+                    <ProgressBar value={value} max="100" />
+                </BarContainer>
+            }
         </Container>
     )
 }

@@ -3,8 +3,9 @@
         "morning": {
             "colors": {
                 "body": "linear-gradient(#023e8a, #8ecae6 60%, #e9c46a);", 
-                "cards": "#22577a", 
-                "aside": "#2a6f97"
+                "cards": "#05609d61", 
+                "aside": "#2a6f97",
+                "progressBar": "#05609d"
             }, 
             "images": {
                 "montains": "montains-morning",
@@ -24,8 +25,9 @@
         "afternoon": {
             "colors": {
                 "body": "linear-gradient(#219ebc, #9bf6ff);",
-                "cards": "#495057", 
-                "aside": "#595959"
+                "cards": "#49505791", 
+                "aside": "#595959",
+                "progressBar": "#14213d"
             }, 
             "images": {
                 "montains": "montains-afternoon",
@@ -46,8 +48,9 @@
         "evening": {
             "colors": {
                 "body": "linear-gradient(#6930c3, #ffadad 70%, #f9c74f);",
-                "cards": "#f9844a", 
-                "aside": "#6a040f"
+                "cards": "#f77f005e", 
+                "aside": "#6a040f",
+                "progressBar": "#d62828"
             }, 
             "images": {
                 "montains": "montains-evening",
@@ -67,8 +70,9 @@
         "night": {
             "colors": {
                 "body": "linear-gradient(#3a0ca3, #7209b7 50%, #90caf9);",
-                "cards": "#001d3d", 
-                "aside": "#012a4a"
+                "cards": "#001d3dab", 
+                "aside": "#012a4a",
+                "progressBar": "#ffb703"
             }, 
             "images": {
                 "montains": "montains-night",

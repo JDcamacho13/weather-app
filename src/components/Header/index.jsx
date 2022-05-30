@@ -1,10 +1,10 @@
 import { HeaderStyled, Title } from "./styles"
 
-export const Header = () => {
+export const Header = ({ country }) => {
     return (
         <HeaderStyled>
             <Title>
-                Venezuela
+                {country}
             </Title>
         </HeaderStyled>
     )

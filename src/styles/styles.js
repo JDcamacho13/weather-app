@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components'
 const size = {
   tablet: '768px',
   laptop: '1024px',
-  desktop: '2560px'
+  desktop: '1440px'
 }
 
 const moveLeftDesktop = keyframes`

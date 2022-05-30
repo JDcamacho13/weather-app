@@ -1,9 +1,9 @@
 import { Status } from "./styles"
 
-export const Description = () => {
+export const Description = ({ weather }) => {
     return (
         <Status>
-            Soleado
+            {weather}
         </Status>
     )
 }

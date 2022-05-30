@@ -1,10 +1,10 @@
 import { Indicator, Number, Unit } from "./styles"
 
-export const Temperature = () => {
+export const Temperature = ({ temp }) => {
     return (
         <Indicator>
             <Number>
-                16  
+                {temp}
             </Number>
             <Unit>
                 °C

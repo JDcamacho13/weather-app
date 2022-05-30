@@ -22,6 +22,36 @@ export const NumberContainer = styled.div`
     }
 `
 
+export const ProgressBar = styled.progress`
+    appearance: none;
+    width: 100%;
+    height: 12px;
+    
+    margin-top: 8px;
+    
+    &::-webkit-progress-bar {
+        background-color: transparent;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    }
+
+    &::-webkit-progress-value {
+        border-radius: 8px;
+        background-color: ${({ theme }) => theme.colors.progressBar};
+    }
+`
+
+export const BarContainer = styled.div`
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    
+    @media ${device.tablet} {
+        max-width: 250px;
+    }
+`
+
 export const Number = styled.span`
     font-size: 42px;
     font-weight: 500;

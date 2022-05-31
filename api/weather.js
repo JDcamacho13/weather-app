@@ -1,4 +1,5 @@
 import { getCountryName } from "./utils/getCountryName";
+import { getTimeFromTimezone } from "./utils/getTimeFromTimezone";
 import responseHandler from "./utils/responseHandler";
 
 const getForecast = async ({ latitude, longitude }) => {
@@ -155,7 +156,7 @@ export default async (req, res) => {
 
     const { name, country, dataList } = await getForecast({ latitude, longitude })
 
-    const { weather, main, wind, visibility, sys } = await getWeather({ name, country })
+    const { weather, main, wind, visibility, timezone, dt } = await getWeather({ name, country })
 
     results.weatherToday = {
       id: weather[0].id,
@@ -168,9 +169,7 @@ export default async (req, res) => {
       pressure: main.pressure,
     }
 
-    const timezone = sys.timezone
-    const today_str = new Date().toLocaleString('en-US', { timeZone: timezone })
-    const today = new Date(today_str)
+    const today = getTimeFromTimezone(timezone)
 
     let year = today.getFullYear();
     let month = ("0" + (today.getMonth() + 1)).slice(-2);
@@ -200,7 +199,7 @@ export default async (req, res) => {
     results.country = getCountryName(country)
     results.city = name
 
-    results.time = today_str
+    results.time = today
 
     res.status(200).json(results)
   } catch (err) {

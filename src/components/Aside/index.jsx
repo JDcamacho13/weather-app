@@ -7,7 +7,7 @@ import { Context } from "../../context/WeatherContext"
 export const Aside = () => {
     const { weatherForecast, weatherToday } = useContext(Context)
     const { humidity, wind, visibility, pressure } = weatherToday
-    const [visibilityValue, setVisibilityValue] = useState([150, "m"])
+    const [visibilityValue, setVisibilityValue] = useState([visibility, "m"])
 
     useEffect(() => {
         if (visibilityValue[0] >= 1000) {

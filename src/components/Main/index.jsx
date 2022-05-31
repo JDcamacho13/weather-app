@@ -4,7 +4,7 @@ import { Header } from '../Header'
 import { WeatherIcon } from '../WeatherIcon'
 import { Temperature } from '../Temperature'
 import { Description } from '../Description'
-import { Date } from '../Date'
+import { TodayDate } from '../TodayDate'
 import { Context } from '../../context/WeatherContext'
 
 export const Main = () => {
@@ -21,7 +21,7 @@ export const Main = () => {
             <WeatherIcon id={icon} />
             <Temperature temp={temp} />
             <Description weather={weather} />
-            <Date />
+            <TodayDate />
         </Container>
     )
 }

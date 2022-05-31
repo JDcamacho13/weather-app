@@ -26,7 +26,6 @@ export const Container = styled.div`
     }
 `
 export const Title = styled.h2`
-    margin-top: 16px;
     grid-column: span 2;
     color: white;
     font-weight: 500;

@@ -1,11 +1,22 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 
-const animation = keyframes`
+const grow = keyframes`
   0%, 40%, 100% { 
     transform: scaleY(0.4); 
   }
   20% { 
     transform: scaleY(1.0) 
+  }
+`
+
+const disappear = keyframes`
+  0% { 
+    opacity: 1;
+    z-index: 100;
+  }
+  100% { 
+    opacity: 0;
+    z-index: -1;
   }
 `
 
@@ -18,6 +29,8 @@ export const Container = styled.div`
   height: 100vh;
   width: 100vw;
   background-color: white;
+  animation: ${({ status }) => !status ? css`${disappear} 1.2s ease forwards` : ''};
+  z-index: 100;
 `
 
 export const Spinner = styled.div`
@@ -36,6 +49,6 @@ export const Spinner = styled.div`
   }
 `
 export const Rect = styled.div`
-  animation: ${animation} 1.2s infinite ease-in-out;
+  animation: ${grow} 1.2s infinite ease-in-out;
   animation-delay: ${({ delay }) => '-' + delay + 's'};
 `

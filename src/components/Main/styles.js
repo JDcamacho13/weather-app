@@ -26,8 +26,10 @@ export const Container = styled.div`
     background-size: 768px;
     background-repeat: no-repeat;
     background-position: bottom;
+    overflow-x: hidden;
 
     @media ${device.tablet} {
       background-image: none;
+      overflow-x: initial;
     }
 `

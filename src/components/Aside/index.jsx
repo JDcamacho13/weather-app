@@ -8,8 +8,6 @@ export const Aside = () => {
     const { weatherForecast, weatherToday } = useContext(Context)
     const { humidity, wind, visibility, pressure } = weatherToday
 
-    console.log(weatherForecast)
-
     return (
         <Container>
             <PronosticList pronostic={weatherForecast} />

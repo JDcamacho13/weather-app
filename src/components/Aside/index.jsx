@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Container, Title } from "./styles"
 import { PronosticList } from "../PronosticList"
 import { HightlightsCard } from "../HightlightsCard"
@@ -7,16 +7,21 @@ import { Context } from "../../context/WeatherContext"
 export const Aside = () => {
     const { weatherForecast, weatherToday } = useContext(Context)
     const { humidity, wind, visibility, pressure } = weatherToday
+    const [visibilityValue, setVisibilityValue] = useState([150, "m"])
 
-    console.log(weatherForecast)
+    useEffect(() => {
+        if (visibilityValue[0] >= 1000) {
+            setVisibilityValue([visibility / 1000, "Km"])
+        }
+    }, [visibility])
 
     return (
         <Container>
             <PronosticList pronostic={weatherForecast} />
             <Title>Destacados de hoy</Title>
-            <HightlightsCard name='Viento' value={wind.speed} unit='mph' />
+            <HightlightsCard name='Viento' value={wind.speed} unit='kph' />
             <HightlightsCard name='Humedad' value={humidity} unit='%' barProgress={true} />
-            <HightlightsCard name='Visibilidad' value={visibility} unit='miles' />
+            <HightlightsCard name='Visibilidad' value={visibilityValue[0]} unit={visibilityValue[1]} />
             <HightlightsCard name='Presion de aire' value={pressure} unit='mb' />
         </Container>
     )

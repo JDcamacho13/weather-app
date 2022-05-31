@@ -9,6 +9,7 @@ import { Context } from '../../context/WeatherContext'
 
 export const Main = () => {
     const { weatherToday: {
+        icon,
         weather,
         temp
     }, country } = useContext(Context)
@@ -17,7 +18,7 @@ export const Main = () => {
         <Container>
             <SunMoon />
             <Header country={country} />
-            <WeatherIcon />
+            <WeatherIcon id={icon} />
             <Temperature temp={temp} />
             <Description weather={weather} />
             <Date />

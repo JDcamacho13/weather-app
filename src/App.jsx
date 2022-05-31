@@ -11,8 +11,7 @@ import StyledGlobal from "./styles/StyledGlobal"
 function App() {
   const [loading, setLoading] = useState(true)
   const { updateData } = useContext(Context)
-  const [theme, setTheme] = useTheme()
-  console.log(theme.default)
+  const [ theme ] = useTheme()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +27,7 @@ function App() {
   return (
     <>
       {loading ? <Loading /> :
-        <ThemeProvider theme={theme.data.night}>
+        <ThemeProvider theme={theme}>
           <StyledGlobal />
           <Container>
             <Main />

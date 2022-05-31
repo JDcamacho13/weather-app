@@ -53,7 +53,7 @@ export const BarContainer = styled.div`
 `
 
 export const Number = styled.span`
-    font-size: 42px;
+    font-size: 32px;
     font-weight: 500;
 
     @media ${device.tablet} {

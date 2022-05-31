@@ -11,8 +11,8 @@ const days = [
     'Sábado',
 ]
 
-export const PronosticItem = ({ date, iconType, temperature }) => {
-    const [ day, setDay ] = useState('')
+export const PronosticItem = ({ date, id, temperature }) => {
+    const [day, setDay] = useState('')
 
     useEffect(() => {
         const weekDay = new Date(date).getDay()
@@ -21,9 +21,9 @@ export const PronosticItem = ({ date, iconType, temperature }) => {
 
     return (
         <Item>
-            <span>{ day }</span>
-            <Icon>{ iconType }</Icon>
-            <span>{ temperature }</span>
+            <span>{day}</span>
+            <Icon><img src={`/images/${id}.png`} alt="weather icon" /></Icon>
+            <span>{temperature}</span>
         </Item>
     )
 }

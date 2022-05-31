@@ -14,6 +14,14 @@ export const Item = styled.li`
     text-align: center;
 `
 
-export const Icon = styled.span`
-    font-size: 48px;
+export const Icon = styled.div`
+    place-self: center;
+    width: 50px;
+    height: 50px;
+
+    & > img {
+        width: 100%;
+        height: 100%;
+        filter: drop-shadow(5px 5px 5px #555);
+    }
 `

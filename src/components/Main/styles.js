@@ -22,6 +22,7 @@ export const Container = styled.div`
     justify-items: center;
     padding: 16px;
     color: white;
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
     background-image: ${({ theme }) => `url('/images/${theme.images.montains}.png')`};
     background-size: 768px;
     background-repeat: no-repeat;

@@ -26,14 +26,16 @@ function App() {
 
   return (
     <>
-      {loading ? <Loading /> :
-        <ThemeProvider theme={theme}>
-          <StyledGlobal />
-          <Container>
-            <Main />
-            <Aside />
-          </Container>
-        </ThemeProvider>
+      <Loading status={loading} />
+      {
+        !loading && 
+          <ThemeProvider theme={theme}>
+            <StyledGlobal />
+            <Container>
+              <Main />
+              <Aside />
+            </Container>
+          </ThemeProvider>
       }
     </>
   )

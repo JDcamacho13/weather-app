@@ -11,7 +11,7 @@ const days = [
     'Sábado',
 ]
 
-export const PronosticItem = ({ date, iconType, temperature }) => {
+export const PronosticItem = ({ date, id, temperature }) => {
     const [day, setDay] = useState('')
 
     useEffect(() => {
@@ -22,7 +22,7 @@ export const PronosticItem = ({ date, iconType, temperature }) => {
     return (
         <Item>
             <span>{day}</span>
-            <Icon><img src={`https://openweathermap.org/img/wn/${id}.png`} alt="weather icon" /></Icon>
+            <Icon><img src={`/images/${id}.png`} alt="weather icon" /></Icon>
             <span>{temperature}</span>
         </Item>
     )

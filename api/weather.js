@@ -1,31 +1,50 @@
-import axios from "axios"
 import { getCountryName } from "./utils/getCountryName";
+import { getTimeFromTimezone } from "./utils/getTimeFromTimezone";
+import responseHandler from "./utils/responseHandler";
 
-const getTheCity = async (req) => {
-
-  const options = {
-    method: 'GET',
-    url: 'https://find-any-ip-address-or-domain-location-world-wide.p.rapidapi.com/iplocation',
+const getForecast = async ({ latitude, longitude }) => {
+  const optionsFuture = {
+    url: 'https://community-open-weather-map.p.rapidapi.com/forecast',
     params: {
-      ip: req.socket.remoteAddress === "127.0.0.1" ? process.env.DEFAULT_IP_ADDRESS : req.socket.remoteAddress,
-      apikey: process.env.API_KEY_IP
+      units: 'metric',
+      lat: latitude,
+      lon: longitude,
+      lang: 'sp'
     },
-    headers: {
-      'X-RapidAPI-Host': 'find-any-ip-address-or-domain-location-world-wide.p.rapidapi.com',
-      'X-RapidAPI-Key': process.env.RAPID_API_KEY
-    }
+    host: 'community-open-weather-map.p.rapidapi.com'
   };
 
-  return axios.request(options).then(function (response) {
-    const city = response.data.city
-    const country = response.data.countryISO2
-    return { city, country }
-  }).catch(function (error) {
-    console.log(error);
-  });
+  const requestFuture = await responseHandler(optionsFuture)
+
+  const { name, country } = requestFuture.data.city
+
+  const dataList = requestFuture.data.list
+
+  return {
+    name,
+    country,
+    dataList
+  }
 }
 
-export default (req, res) => {
+const getWeather = async ({ name, country }) => {
+  const options = {
+    host: 'community-open-weather-map.p.rapidapi.com',
+    params: {
+      q: `${name},${country}`,
+      units: 'metric',
+      lang: 'sp'
+    },
+    url: 'https://community-open-weather-map.p.rapidapi.com/weather'
+  }
+
+  const request = await responseHandler(options)
+
+  return request.data
+}
+
+
+const mooked = (req, res) => {
 
   res.status(200).json(
     {
@@ -123,33 +142,21 @@ export default (req, res) => {
     })
 }
 
-const realData = async (req, res) => {
+export default async (req, res) => {
   try {
-    const { city, country } = await getTheCity(req)
-
     const results = {
       weatherToday: {},
       weatherForecast: [],
-      country: getCountryName(country)
+      country: '',
+      city: '',
+      time: ''
     }
 
-    const options = {
-      method: 'GET',
-      url: 'https://community-open-weather-map.p.rapidapi.com/weather',
-      params: {
-        q: city,
-        units: 'metric',
-        lang: 'sp'
-      },
-      headers: {
-        'X-RapidAPI-Host': 'community-open-weather-map.p.rapidapi.com',
-        'X-RapidAPI-Key': process.env.RAPID_API_KEY
-      }
-    };
+    const { latitude, longitude } = req.query
 
-    const request = await axios.request(options)
+    const { name, country, dataList } = await getForecast({ latitude, longitude })
 
-    const { weather, main, wind, visibility, sys } = request.data
+    const { weather, main, wind, visibility, timezone, dt } = await getWeather({ name, country })
 
     results.weatherToday = {
       id: weather[0].id,
@@ -162,27 +169,7 @@ const realData = async (req, res) => {
       pressure: main.pressure,
     }
 
-    const optionsFuture = {
-      method: 'GET',
-      url: 'https://community-open-weather-map.p.rapidapi.com/forecast',
-      params: {
-        q: city,
-        units: 'metric',
-        lang: 'sp'
-      },
-      headers: {
-        'X-RapidAPI-Host': 'community-open-weather-map.p.rapidapi.com',
-        'X-RapidAPI-Key': process.env.RAPID_API_KEY
-      }
-    };
-
-    const requestFuture = await axios.request(optionsFuture)
-
-    const dataList = requestFuture.data.list
-
-    const timezone = sys.timezone
-    const today_str = new Date().toLocaleString('en-US', { timeZone: timezone })
-    const today = new Date(today_str)
+    const today = getTimeFromTimezone(timezone)
 
     let year = today.getFullYear();
     let month = ("0" + (today.getMonth() + 1)).slice(-2);
@@ -199,6 +186,8 @@ const realData = async (req, res) => {
         icon: item.weather[0].icon,
         weather: item.weather[0].description,
         temp: item.main.temp,
+        temp_min: item.main.temp_min,
+        temp_max: item.main.temp_max,
         wind: item.wind,
         humidity: item.main.humidity,
         visibility: item.visibility,
@@ -207,8 +196,14 @@ const realData = async (req, res) => {
       }
     })
 
+    results.country = getCountryName(country)
+    results.city = name
+
+    results.time = today
+
     res.status(200).json(results)
   } catch (err) {
+    console.log(err)
     res.status(500).json({
       message: 'Error',
       error: err

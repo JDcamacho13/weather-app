@@ -3,7 +3,6 @@ import { device } from '../../styles/styles'
 
 export const Icon = styled.div`
     place-self: center;
-    margin-top: 25px;
     width: 150px;
     height: 150px;
 

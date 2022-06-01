@@ -29,7 +29,7 @@ export const Container = styled.div`
   height: 100vh;
   width: 100vw;
   background-color: white;
-  animation: ${({ status }) => !status ? css`${disappear} 1.2s ease forwards` : ''};
+  animation: ${({ status, error }) => (!status && error === undefined) ? css`${disappear} 1.2s ease forwards` : ''};
   z-index: 100;
 `
 

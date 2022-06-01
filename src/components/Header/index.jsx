@@ -2,12 +2,12 @@ import { Search } from '../Search'
 import { Switch } from '../Switch'
 import { Heading, Location } from "./styles"
 
-export const Header = ({ country }) => {
+export const Header = ({ country, city }) => {
     return (
         <Heading>
             <Search />
             <Location>
-                { country }
+                {city}, {country}
             </Location>
             <Switch />
         </Heading>

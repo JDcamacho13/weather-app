@@ -6,11 +6,16 @@ const Provider = ({ children }) => {
   const [country, setCountry] = useState({})
   const [weatherToday, setWeatherToday] = useState({})
   const [weatherForecast, setWeatherForecast] = useState([])
+  const [city, setCity] = useState({})
+  const [time, setTime] = useState({})
+
 
   const updateData = (data) => {
     setCountry(data.country)
     setWeatherToday(data.weatherToday)
     setWeatherForecast(data.weatherForecast)
+    setCity(data.city)
+    setTime(data.time)
   }
 
   return (
@@ -19,6 +24,8 @@ const Provider = ({ children }) => {
         weatherToday,
         weatherForecast,
         country,
+        city,
+        time,
         updateData
       }}
     >

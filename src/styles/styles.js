@@ -11,7 +11,7 @@ const moveLeftDesktop = keyframes`
     background-position: 0;
   }
   100% { 
-    background-position: -3000px;
+    background-position: -100vw;
   }
 `
 
@@ -20,7 +20,7 @@ const moveLeftMobile = keyframes`
     background-position: 0;
   }
   100% { 
-    background-position: -768px;
+    background-position: -100vw;
   }
 `
 
@@ -48,12 +48,12 @@ export const Container = styled.div`
         background-size: contain;
         background-position: center;
         top: 0;
-        animation: ${moveLeftMobile} 200s infinite linear;
+        animation: ${moveLeftMobile} 30s infinite linear;
         z-index: -1;
 
         @media ${device.tablet} {
           background-image: ${({ theme }) => `url('/images/${theme.images.sky.desktop}.png')`};
-          animation: ${moveLeftDesktop} 400s infinite linear;
+          animation: ${moveLeftDesktop} 100s infinite linear;
         }
     }
 

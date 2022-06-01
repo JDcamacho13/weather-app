@@ -1,11 +1,15 @@
-import { HeaderStyled, Title } from "./styles"
+import { Search } from '../Search'
+import { Switch } from '../Switch'
+import { Heading, Location } from "./styles"
 
 export const Header = ({ country, city }) => {
     return (
-        <HeaderStyled>
-            <Title>
+        <Heading>
+            <Search />
+            <Location>
                 {city}, {country}
-            </Title>
-        </HeaderStyled>
+            </Location>
+            <Switch />
+        </Heading>
     )
 }

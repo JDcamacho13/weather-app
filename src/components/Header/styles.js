@@ -4,7 +4,7 @@ import { device } from '../../styles/styles'
 export const Heading = styled.header`
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr min-content 1fr;
+    grid-template-columns: 76px 1fr 76px;
 
     color: white;
 `

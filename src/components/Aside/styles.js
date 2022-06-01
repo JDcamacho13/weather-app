@@ -3,7 +3,7 @@ import { device } from '../../styles/styles'
 
 export const Container = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: min-content min-content;
     gap: 16px;
     overflow-x: hidden;
@@ -15,7 +15,8 @@ export const Container = styled.div`
         background-color: transparent;
     }
 
-    @media ${device.laptop} {
+    @media ${device.tablet} {
+        grid-template-columns: 1fr 1fr;
         padding: 32px;
         gap: 32px;
     }
@@ -26,8 +27,11 @@ export const Container = styled.div`
     }
 `
 export const Title = styled.h2`
-    grid-column: span 2;
     color: white;
     font-weight: 500;
     text-align: center;
+
+    @media ${device.tablet} {
+        grid-column: span 2;
+    }
 `

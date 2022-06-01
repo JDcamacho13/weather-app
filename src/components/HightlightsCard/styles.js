@@ -10,15 +10,28 @@ export const Container = styled.div`
     background-color: ${({ theme }) => theme.colors.cards};
     text-align: center;
     color: white;
-`
+    `
 
 export const NumberContainer = styled.div`
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 
+    & > img {
+        width: 100px;
+    }
+
+    @media ${device.tablet} {
+        & > img {
+            width: 65px;
+        }   
+    }
+    
     @media ${device.laptop} {
         font-size: 24px;
+        & > img {
+            width: 100px;
+        }   
     }
 `
 
@@ -41,6 +54,23 @@ export const ProgressBar = styled.progress`
     }
 `
 
+export const Number = styled.span`
+    font-size: 32px;
+    font-weight: 500;
+
+    @media ${device.tablet} {
+        font-size: 36px;
+    }
+
+    @media ${device.laptop} {
+        font-size: 48px;
+    }
+
+    @media ${device.desktop} {
+        font-size: 68px;
+    }
+`
+
 export const BarContainer = styled.div`
     margin: 0 auto;
     display: flex;
@@ -49,18 +79,5 @@ export const BarContainer = styled.div`
     
     @media ${device.tablet} {
         max-width: 250px;
-    }
-`
-
-export const Number = styled.span`
-    font-size: 32px;
-    font-weight: 500;
-
-    @media ${device.tablet} {
-        font-size: 54px;
-    }
-
-    @media ${device.desktop} {
-        font-size: 68px;
     }
 `

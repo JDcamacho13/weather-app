@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import { device } from '../../styles/styles'
 
 export const List = styled.ul`
-    grid-column: span 2;
     width: 100%;
     max-width: 100%;
     display: flex;
@@ -17,7 +16,12 @@ export const List = styled.ul`
         display: none;
     }
 
+    @media ${device.tablet} {
+        grid-column: span 2;
+    }
+    
     @media ${device.laptop} {
         justify-content: center;
+        grid-column: span 2;
     }
 `

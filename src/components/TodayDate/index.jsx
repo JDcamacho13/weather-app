@@ -18,7 +18,7 @@ export const TodayDate = () => {
             day: todayDate.getDay(),
             date: todayDate.getDate(),
             month: todayDate.getMonth(),
-            hour: hourDate > 12 ? hour - 12 : hour,
+            hour: hourDate > 12 ? hourDate - 12 : hourDate,
             minutes,
             suffix
         })

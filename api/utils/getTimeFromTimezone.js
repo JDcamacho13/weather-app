@@ -1,9 +1,9 @@
 export const getTimeFromTimezone = (timezone) => {
-  d = new Date()
-  localTime = d.getTime()
-  localOffset = d.getTimezoneOffset() * 60000
-  utc = localTime + localOffset
+  const d = new Date()
+  const localTime = d.getTime()
+  const localOffset = d.getTimezoneOffset() * 60000
+  const utc = localTime + localOffset
   var atlanta = utc + (1000 * timezone)
-  nd = new Date(atlanta)
+  const nd = new Date(atlanta)
   return nd
 }

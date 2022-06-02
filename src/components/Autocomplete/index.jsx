@@ -1,8 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
 import { Loading, SugesstionsList, SugestionItem } from "./styles";
+import { Context } from "../../context/WeatherContext";
 
 export const Autocomplete = () => {
+  const { updateData } = useContext(Context);
   const controllerRef = useRef(null)
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
@@ -44,8 +46,23 @@ export const Autocomplete = () => {
     setShowSugesstions(false);
   }
 
+  const onsubmit = (e) => {
+    e.preventDefault();
+    setSugesstions([]);
+    setShowSugesstions(false);
+
+    const city = search;
+
+    const fecthData = async () => {
+      const req = await fetch(`/api/weatherQuery?city=${city}`)
+      const data = await req.json()
+      updateData(data)
+    }
+    fecthData();
+  }
+
   return (
-    <>
+    <form onSubmit={onsubmit}>
       <input type="text" placeholder="Buscar" onClick={() => setShowSugesstions(!showSugesstions)} value={search} onChange={handlerchange} />
       {
         ((sugesstions.length > 0 || loading) && showSugesstions) &&
@@ -63,6 +80,6 @@ export const Autocomplete = () => {
           ))}
         </SugesstionsList>
       }
-    </>
+    </form>
   )
 }

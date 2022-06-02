@@ -30,7 +30,7 @@ export const SugesstionsList = styled.ul`
   width: 100%;
   padding: 0;
   margin: 0;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.cards_background};
   border-radius: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   z-index: 100;
@@ -40,6 +40,6 @@ export const SugestionItem = styled.li`
   padding: 10px;
   cursor: pointer;
   &:hover {
-    background-color: #f5f5f5;
+    background-color: #3a3a3a;
   }
 `;

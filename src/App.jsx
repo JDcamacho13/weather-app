@@ -22,9 +22,18 @@ function App() {
   const { updateData } = useContext(Context)
   const [theme] = useTheme()
 
-  console.log(location)
-
   useEffect(() => {
+    if (error !== undefined) {
+      const fetchData = async () => {
+        const response = await fetch(`/api/weather?latitude=10.2006784&longitude=-67.5610624`)
+        const body = await response.json()
+        console.log(body)
+        updateData(body)
+        setLoading(false)
+      }
+      fetchData()
+    }
+
     if (location !== undefined) {
       const fetchData = async () => {
         const response = await fetch(`/api/weather?latitude=${location.latitude}&longitude=${location.longitude}`)
@@ -35,13 +44,13 @@ function App() {
       }
       fetchData()
     }
-  }, [location])
+  }, [location, error])
 
   return (
     <>
-      <Loading status={loading} error={error} />
+      <Loading status={loading} error={undefined} />
       {
-        !loading && location &&
+        (!loading && (location || error !== undefined)) &&
         <ThemeProvider theme={theme}>
           <StyledGlobal />
           <Container>

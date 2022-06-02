@@ -9,16 +9,16 @@ export const Search = () => {
     return (
         <div style={{ position: 'relative' }}>
             <Icon>
-                <Button onClick={() => setToggleSearch(!toggleSearch)} color={'#fff'}>
-                    <FaSearch />
+                <Button onClick={() => setToggleSearch(!toggleSearch)}>
+                    <FaSearch size={20} />
                 </Button>
             </Icon>
             <Container active={toggleSearch}>
                 {toggleSearch &&
                     <>
                         <Icon>
-                            <Button onClick={() => setToggleSearch(!toggleSearch)} color={'#000'}>
-                                <FaSearch />
+                            <Button onClick={() => setToggleSearch(!toggleSearch)}>
+                                <FaSearch size={20} />
                             </Button>
                         </Icon>
                         <Autocomplete />

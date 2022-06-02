@@ -1,18 +1,17 @@
 import styled, { css } from 'styled-components'
 
 export const Icon = styled.span`
-
     & > svg {
-        width: 25px;
-        height: 25px;
+        width: 50px;
+        height: 50px;
         cursor: pointer;
     }
 `
 
 export const Button = styled.button`
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     outline: none;
     border: none;
@@ -21,17 +20,17 @@ export const Button = styled.button`
     align-items: center;
     justify-content: center;
     
-    color: ${({ color }) => color};
+    color: #fff;
 
     &:hover {
-        border: 1px solid #000;
+        border: 1px solid #fff;
     }
 `
 
 export const Container = styled.div`
   position: fixed;
   width: 0;
-  height: 45px;
+  height: 55px;
   top: 10px;
   left: 15px;
   display: flex;
@@ -40,7 +39,7 @@ export const Container = styled.div`
   padding-left: 0;
   margin-bottom: 10px;
   background-color: transparent;
-  color: #000;
+  color: #fff;
   z-index: 100;
   transition: all 0.3s;
   
@@ -51,8 +50,8 @@ export const Container = styled.div`
 
   
     ${({ active }) => active && css`  
-        width: 200px;  
-        background-color: #fff;
+        width: 300px;  
+        background-color: ${({ theme }) => theme.colors.cards_background};
         box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     `}
 `;

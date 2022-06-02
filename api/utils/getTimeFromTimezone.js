@@ -4,8 +4,11 @@ export const getTimeFromTimezone = (timezone) => {
   const localOffset = d.getTimezoneOffset() * 60000
   const utc = localTime + localOffset
   var atlanta = utc + (1000 * timezone)
-  const nd = new Date(atlanta)
-  console.log(nd)
-  console.log(nd.toLocaleString())
-  return nd
+  const nd = new Date(atlanta).getTime()
+
+  const date = new Date(nd + 28800000)
+
+  console.log(date)
+  console.log(date.toLocaleString())
+  return date
 }

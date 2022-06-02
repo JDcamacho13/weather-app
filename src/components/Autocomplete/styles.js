@@ -9,6 +9,15 @@ const spin = keyframes`
   }
 `;
 
+export const SearchInput = styled.input`
+  height: fit-content;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-bottom: 2px white solid;
+  outline: none;
+`
+
 export const Loading = styled.div`
   width: 25px;
   height: 25px;
@@ -24,13 +33,11 @@ export const Loading = styled.div`
 
 export const SugesstionsList = styled.ul`
   list-style: none;
-  position: absolute;
   top: 40px;
   left: 0;
   width: 100%;
   padding: 0;
   margin: 0;
-  background-color: #fff;
   border-radius: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   z-index: 100;
@@ -39,7 +46,8 @@ export const SugesstionsList = styled.ul`
 export const SugestionItem = styled.li`
   padding: 10px;
   cursor: pointer;
+
   &:hover {
-    background-color: #f5f5f5;
+    text-decoration: underline;
   }
 `;

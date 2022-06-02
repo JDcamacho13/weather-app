@@ -1,6 +1,10 @@
-export const getTimeFromTimezone = (timezoneOffset) => {
-  const time = new Date()
-  const utc = time.getTime() + (time.getTimezoneOffset() * 60000)
-  const nd = new Date(utc + (3600000 * timezoneOffset))
-  return nd
+export const getTimeFromTimezone = (timezone) => {
+  const date = new Date()
+  const offset = date.getTimezoneOffset()
+
+  const timezoneOffset = timezone * 60 * 1000
+
+  const newDate = new Date(date.getTime() + timezoneOffset + offset * 60 * 1000)
+
+  return newDate
 }

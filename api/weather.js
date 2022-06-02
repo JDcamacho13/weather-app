@@ -70,7 +70,7 @@ export default async (req, res) => {
       pressure: main.pressure,
     }
 
-    const today = getTimeFromTimezone(timezone)
+    const today = new Date(dt * 1000 - (timezone * 1000))
 
     let year = today.getFullYear();
     let month = ("0" + (today.getMonth() + 1)).slice(-2);

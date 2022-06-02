@@ -1,5 +1,5 @@
 export const getTimeFromTimezone = (timezone) => {
-  const d = new Date()
+  let d = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Caracas" }))
   const localTime = d.getTime()
   const localOffset = d.getTimezoneOffset() * 60000
   const utc = localTime + localOffset

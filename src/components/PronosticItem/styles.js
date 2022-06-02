@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { device } from '../../styles/styles'
 
 export const Item = styled.li`
     font-size: 16px;
@@ -7,6 +6,8 @@ export const Item = styled.li`
     flex: 1 1;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 8px;
     padding: 8px;
     list-style: none;
     border-radius: 6px;
@@ -24,4 +25,11 @@ export const Icon = styled.div`
         height: 100%;
         filter: drop-shadow(5px 5px 5px #555);
     }
+`
+
+export const Temperature = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
 `

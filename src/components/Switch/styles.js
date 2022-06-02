@@ -18,7 +18,7 @@ export const Button = styled.button`
     border: none;
     background-color: ${({ theme, active }) => active ? theme.colors.cards : 'transparent'};
     cursor: pointer;
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
 
     &:last-of-type {
         margin-right: 0;

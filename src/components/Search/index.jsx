@@ -1,30 +1,42 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Autocomplete } from "../Autocomplete";
-import { Icon, Button, Container } from './styles'
+import { Button, Container, List } from './styles'
 
 export const Search = () => {
     const [toggleSearch, setToggleSearch] = useState(false);
 
     return (
-        <div style={{ position: 'relative' }}>
+        <Container>
+            <Button onClick={() => setToggleSearch(!toggleSearch)}>
+                <FaSearch />
+            </Button>
+            <List active={toggleSearch}>
+                {
+                    toggleSearch &&
+                            <Autocomplete />
+                        }
+            </List>
+        </Container>
+    )
+}
+
+{/* <Container>
+<Icon>
+    <Button onClick={() => setToggleSearch(!toggleSearch)} color={'#fff'}>
+        <FaSearch />
+    </Button>
+</Icon>
+<List active={toggleSearch}>
+    {toggleSearch &&
+        <>
             <Icon>
-                <Button onClick={() => setToggleSearch(!toggleSearch)} color={'#fff'}>
+                <Button onClick={() => setToggleSearch(!toggleSearch)} color={'#000'}>
                     <FaSearch />
                 </Button>
             </Icon>
-            <Container active={toggleSearch}>
-                {toggleSearch &&
-                    <>
-                        <Icon>
-                            <Button onClick={() => setToggleSearch(!toggleSearch)} color={'#000'}>
-                                <FaSearch />
-                            </Button>
-                        </Icon>
-                        <Autocomplete />
-                    </>
-                }
-            </Container>
-        </div>
-    )
-}
+            <Autocomplete />
+        </>
+    }
+</List>
+</Container> */}

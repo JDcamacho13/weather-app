@@ -22,8 +22,6 @@ function App() {
   const { updateData } = useContext(Context)
   const [theme] = useTheme()
 
-  console.log(location)
-
   useEffect(() => {
     if (location !== undefined) {
       const fetchData = async () => {

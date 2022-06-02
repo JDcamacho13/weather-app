@@ -9,13 +9,13 @@ export const Search = () => {
     return (
         <Container>
             <Button onClick={() => setToggleSearch(!toggleSearch)}>
-                <FaSearch />
+                <FaSearch size={20} />
             </Button>
             <List active={toggleSearch}>
                 {
                     toggleSearch &&
-                            <Autocomplete />
-                        }
+                    <Autocomplete setToggleSearch={setToggleSearch} />
+                }
             </List>
         </Container>
     )
@@ -31,12 +31,22 @@ export const Search = () => {
     {toggleSearch &&
         <>
             <Icon>
-                <Button onClick={() => setToggleSearch(!toggleSearch)} color={'#000'}>
-                    <FaSearch />
+                <Button onClick={() => setToggleSearch(!toggleSearch)}>
+                    <FaSearch size={20} />
                 </Button>
             </Icon>
-            <Autocomplete />
-        </>
-    }
-</List>
-</Container> */}
+            <Container active={toggleSearch}>
+                {toggleSearch &&
+                    <>
+                        <Icon>
+                            <Button onClick={() => setToggleSearch(!toggleSearch)}>
+                                <FaSearch size={20} />
+                            </Button>
+                        </Icon>
+                        <Autocomplete />
+                    </>
+                }
+            </Container>
+        </div>
+    )
+            */}

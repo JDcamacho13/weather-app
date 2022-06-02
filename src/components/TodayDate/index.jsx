@@ -17,7 +17,7 @@ export const TodayDate = () => {
             hour: todayDate.getHours() > 12 ? ("PM " + (todayDate.getHours() - 12)) : "AM" + todayDate.getHours(),
             minutes: todayDate.getMinutes()
         })
-    }, [])
+    }, [time])
 
     return (
         <div>Hoy, {days[today.day] + " " + today.date + " de " + months[today.month] + " " + today.hour + ":" + today.minutes}</div>

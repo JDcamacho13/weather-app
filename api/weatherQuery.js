@@ -2,13 +2,12 @@ import { getCountryName } from "./utils/getCountryName";
 import { getTimeFromTimezone } from "./utils/getTimeFromTimezone";
 import responseHandler from "./utils/responseHandler";
 
-const getForecast = async ({ latitude, longitude }) => {
+const getForecast = async (city) => {
   const optionsFuture = {
     url: 'https://community-open-weather-map.p.rapidapi.com/forecast',
     params: {
+      q: city,
       units: 'metric',
-      lat: latitude,
-      lon: longitude,
       lang: 'sp'
     },
     host: 'community-open-weather-map.p.rapidapi.com'
@@ -53,9 +52,11 @@ export default async (req, res) => {
       time: ''
     }
 
-    const { latitude, longitude } = req.query
+    const { city } = req.query
 
-    const { name, country, dataList } = await getForecast({ latitude, longitude })
+    const { name, country, dataList } = await getForecast(city)
+
+
 
     const { weather, main, wind, visibility, timezone, dt } = await getWeather({ name, country })
 

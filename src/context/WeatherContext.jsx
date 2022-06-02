@@ -8,7 +8,7 @@ const Provider = ({ children }) => {
   const [weatherForecast, setWeatherForecast] = useState([])
   const [city, setCity] = useState({})
   const [time, setTime] = useState({})
-
+  const [unit, setUnit] = useState(false)
 
   const updateData = (data) => {
     setCountry(data.country)
@@ -16,6 +16,13 @@ const Provider = ({ children }) => {
     setWeatherForecast(data.weatherForecast)
     setCity(data.city)
     setTime(data.time)
+  }
+
+  const convertTemp = (temp) => {
+    if (unit) {
+      return Math.round((temp * 9) / 5 + 32)
+    }
+    return Math.round(temp)
   }
 
   return (
@@ -26,6 +33,9 @@ const Provider = ({ children }) => {
         country,
         city,
         time,
+        unit,
+        convertTemp,
+        setUnit,
         updateData
       }}
     >

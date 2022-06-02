@@ -12,14 +12,14 @@ export const Main = () => {
         icon,
         weather,
         temp
-    }, country, city } = useContext(Context)
+    }, country, city, convertTemp } = useContext(Context)
 
     return (
         <Container>
             <SunMoon />
             <Header country={country} city={city} />
             <WeatherIcon id={icon} />
-            <Temperature temp={temp} />
+            <Temperature temp={temp} convertTemp={convertTemp} />
             <Description weather={weather} />
             <TodayDate />
         </Container>

@@ -1,13 +1,16 @@
 import { Indicator, Number, Unit } from "./styles"
+import { useContext } from "react"
+import { Context } from "../../context/WeatherContext"
 
-export const Temperature = ({ temp }) => {
+export const Temperature = ({ temp, convertTemp }) => {
+    const { unit } = useContext(Context)
     return (
         <Indicator>
             <Number>
-                {temp}
+                {convertTemp(temp)}
             </Number>
             <Unit>
-                °C
+                °{unit ? "F" : "C"}
             </Unit>
         </Indicator>
     )

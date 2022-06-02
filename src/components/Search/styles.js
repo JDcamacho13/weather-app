@@ -6,8 +6,8 @@ export const Container = styled.div`
 
 export const Button = styled.button`
     position: absolute;
-    width: 28px;
-    height: 28px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     outline: none;
     border: none;
@@ -32,9 +32,9 @@ export const List = styled.div`
     display: flex;
     flex-direction: column;
     gap: 8px;
-    padding: 4px 16px 4px 30px;
+    padding: 4px 0px 4px 0px;
     width: 0;
-    min-height: 30px;
+    min-height: 35px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     border-top-left-radius: 15px;
@@ -46,10 +46,10 @@ export const List = styled.div`
     z-index: 100;
     
     ${({ active }) => active && css`  
-        width: 201px;
+        width: 250px;
         background-color: ${({ theme }) => {
-           const color = theme.colors.cards;
-           return color.slice(0, -2)
+            const color = theme.colors.cards;
+            return color.slice(0, -2)
         }};
         box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     `}

@@ -23,23 +23,32 @@ function App() {
   const [theme] = useTheme()
 
   useEffect(() => {
-    if (location !== undefined) {
+    if (error !== undefined) {
       const fetchData = async () => {
-        const response = await fetch(`/api/weather?latitude=${location.latitude}&longitude=${location.longitude}`)
+        const response = await fetch(`/api/weather?latitude=10.2006784&longitude=-67.5610624`)
         const body = await response.json()
-        console.log(body)
         updateData(body)
         setLoading(false)
       }
       fetchData()
     }
-  }, [location])
+
+    if (location !== undefined) {
+      const fetchData = async () => {
+        const response = await fetch(`/api/weather?latitude=${location.latitude}&longitude=${location.longitude}`)
+        const body = await response.json()
+        updateData(body)
+        setLoading(false)
+      }
+      fetchData()
+    }
+  }, [location, error])
 
   return (
     <>
-      <Loading status={loading} error={error} />
+      <Loading status={loading} error={undefined} />
       {
-        !loading && location &&
+        (!loading && (location || error !== undefined)) &&
         <ThemeProvider theme={theme}>
           <StyledGlobal />
           <Container>

@@ -23,7 +23,7 @@ export const Icon = styled.div`
     & > img {
         width: 100%;
         height: 100%;
-        filter: drop-shadow(5px 5px 5px #555);
+        object-fit: contain;
     }
 `
 

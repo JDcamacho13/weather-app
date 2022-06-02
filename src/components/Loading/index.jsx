@@ -5,6 +5,7 @@ import { Error } from '../Error';
 export const Loading = ({ status, error }) => {
   return ReactDOM.createPortal(
     <Container status={status} error={error}>
+      <img src='/images/logo.png' />
       {
         error ?
           <Error error={error} /> :

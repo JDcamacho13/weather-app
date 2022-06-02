@@ -5,5 +5,7 @@ export const getTimeFromTimezone = (timezone) => {
   const utc = localTime + localOffset
   var atlanta = utc + (1000 * timezone)
   const nd = new Date(atlanta)
+  console.log(nd)
+  console.log(nd.toLocaleString())
   return nd
 }

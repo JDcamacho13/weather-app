@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Item, Icon } from './styles'
+import { Item, Icon, Temperature } from './styles'
+import { FaThermometerHalf } from "react-icons/fa";
 
 const days = [
     'Domingo',
@@ -23,7 +24,10 @@ export const PronosticItem = ({ date, id, temperature }) => {
         <Item>
             <span>{day}</span>
             <Icon><img src={`/images/${id}.png`} alt="weather icon" /></Icon>
-            <span>{temperature}</span>
-        </Item>
+            <Temperature>
+                <FaThermometerHalf />
+                { temperature }
+            </Temperature>
+        </Item> 
     )
 }

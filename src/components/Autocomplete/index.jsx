@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
-import { Loading, SugesstionsList, SugestionItem } from "./styles";
+import { SearchInput, Loading, SugesstionsList, SugestionItem } from "./styles";
 import { Context } from "../../context/WeatherContext";
 
 export const Autocomplete = () => {
@@ -63,7 +63,7 @@ export const Autocomplete = () => {
 
   return (
     <form onSubmit={onsubmit}>
-      <input type="text" placeholder="Buscar" onClick={() => setShowSugesstions(!showSugesstions)} value={search} onChange={handlerchange} />
+      <SearchInput type="text" placeholder="Buscar" onClick={() => setShowSugesstions(!showSugesstions)} value={search} onChange={handlerchange} />
       {
         ((sugesstions.length > 0 || loading) && showSugesstions) &&
         <SugesstionsList>

@@ -26,15 +26,19 @@ export const Container = styled.div`
   left: 0;
   display: grid;
   place-content: center;
+  place-items: center;
   height: 100vh;
   width: 100vw;
   background-color: white;
   animation: ${({ status, error }) => (!status && error === undefined) ? css`${disappear} 1.2s ease forwards` : ''};
   z-index: 100;
+
+  & > img{
+    width: 120px;
+  }
 `
 
 export const Spinner = styled.div`
-  margin: -100px auto;
   width: 100px;
   height: 80px;
   text-align: center;

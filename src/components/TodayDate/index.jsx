@@ -10,16 +10,21 @@ export const TodayDate = () => {
 
     useEffect(() => {
         const todayDate = new Date(time);
+        const hourDate = todayDate.getHours();
+        const minutes = todayDate.getMinutes();
+        const suffix = hourDate >= 12 ? 'PM' : 'AM';
+
         setToday({
             day: todayDate.getDay(),
             date: todayDate.getDate(),
             month: todayDate.getMonth(),
-            hour: todayDate.getHours() > 12 ? ((todayDate.getHours() - 12) + " PM") : todayDate.getHours() + " AM",
-            minutes: todayDate.getMinutes()
+            hour: hourDate > 12 ? hour - 12 : hour,
+            minutes,
+            suffix
         })
     }, [time])
 
     return (
-        <div>Hoy, {days[today.day] + " " + today.date + " de " + months[today.month] + " " + today.hour + ":" + today.minutes}</div>
+        <div>Hoy, {days[today.day] + " " + today.date + " de " + months[today.month] + " " + today.hour + ":" + today.minutes + " " + today.suffix}</div>
     )
 }

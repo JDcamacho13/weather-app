@@ -9,13 +9,45 @@ const spin = keyframes`
   }
 `;
 
+export const Submit = styled.button`
+  display: ${({ toggleSearch }) => (toggleSearch ? "inline-block" : "none")};
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 0.25rem;
+  margin: 0 0 0 25px;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+
+  }
+`
+
 export const SearchInput = styled.input`
+  margin-top: -10px;
+  margin-left: 38px;
+  margin-right: 10px;
   height: fit-content;
   background-color: transparent;
   color: white;
   border: none;
   border-bottom: 2px white solid;
   outline: none;
+`
+
+export const SeacrhLoading = styled.div`
+  position: absolute;
+  top: 4px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 5px solid #0099ff75;
+  border-top: 5px solid #0099ff;
+  
+  animation: ${spin} 1s linear infinite;
 `
 
 export const Loading = styled.div`
@@ -44,7 +76,7 @@ export const SugesstionsList = styled.ul`
 `;
 
 export const SugestionItem = styled.li`
-  padding: 10px;
+  padding: 10px 10px 10px 35px;
   cursor: pointer;
 
   &:hover {

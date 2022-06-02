@@ -1,16 +1,19 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
-import { SearchInput, Loading, SugesstionsList, SugestionItem } from "./styles";
+import { SearchInput, Loading, SugesstionsList, SugestionItem, SeacrhLoading } from "./styles";
 import { Context } from "../../context/WeatherContext";
 
-export const Autocomplete = () => {
+export const Autocomplete = ({ setToggleSearch }) => {
   const { updateData } = useContext(Context);
   const controllerRef = useRef(null)
+  const formRef = useRef(null)
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
   const [sugesstions, setSugesstions] = useState([]);
   const [showSugesstions, setShowSugesstions] = useState(false);
   const debouncedSearch = useDebounce(search, 500);
+  const [loadingData, setLoadingData] = useState(false);
+
 
   useEffect(() => {
     const getAutocomplete = async () => {
@@ -23,7 +26,6 @@ export const Autocomplete = () => {
           signal: controllerRef.current?.signal
         })
         const data = await req.json()
-        console.log(data)
         setSugesstions(data);
         setLoading(false);
       }
@@ -40,30 +42,46 @@ export const Autocomplete = () => {
     setSearch(e.target.value);
   }
 
+  const fecthNewData = async (e) => {
+    e.preventDefault();
+    setSugesstions([]);
+    setShowSugesstions(false);
+    setLoadingData(true);
+
+    const city = search;
+    try {
+      const req = await fetch(`/api/weatherQuery?city=${city}`)
+      const data = await req.json()
+
+      if (req.status === 200) {
+        updateData(data);
+        setSearch('');
+        setToggleSearch(false);
+      } else {
+        alert('Intenta con otra ciudad')
+      }
+    }
+    catch (err) {
+      alert('Intenta con otra ciudad')
+    }
+    setLoadingData(false);
+  }
+
   const onclick = (e) => {
     setSearch(e.target.getAttribute('data-value'));
     setSugesstions([]);
     setShowSugesstions(false);
+    fecthNewData(e)
   }
 
   const onsubmit = (e) => {
-    e.preventDefault();
-    setSugesstions([]);
-    setShowSugesstions(false);
-
-    const city = search;
-
-    const fecthData = async () => {
-      const req = await fetch(`/api/weatherQuery?city=${city}`)
-      const data = await req.json()
-      updateData(data)
-    }
-    fecthData();
+    fecthNewData(e);
   }
 
   return (
-    <form onSubmit={onsubmit}>
-      <SearchInput type="text" placeholder="Buscar" onClick={() => setShowSugesstions(!showSugesstions)} value={search} onChange={handlerchange} />
+    <form onSubmit={onsubmit} ref={formRef} style={{ position: 'relative' }}>
+      <SearchInput type="text" placeholder="Buscar" onClick={() => setShowSugesstions(true)} value={search} onChange={handlerchange} disabled={loadingData} />
+      {loadingData && <SeacrhLoading />}
       {
         ((sugesstions.length > 0 || loading) && showSugesstions) &&
         <SugesstionsList>

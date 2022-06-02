@@ -56,6 +56,8 @@ export default async (req, res) => {
 
     const { name, country, dataList } = await getForecast(city)
 
+
+
     const { weather, main, wind, visibility, timezone, dt } = await getWeather({ name, country })
 
     results.weatherToday = {

@@ -27,7 +27,6 @@ function App() {
       const fetchData = async () => {
         const response = await fetch(`/api/weather?latitude=10.2006784&longitude=-67.5610624`)
         const body = await response.json()
-        console.log(body)
         updateData(body)
         setLoading(false)
       }
@@ -38,7 +37,6 @@ function App() {
       const fetchData = async () => {
         const response = await fetch(`/api/weather?latitude=${location.latitude}&longitude=${location.longitude}`)
         const body = await response.json()
-        console.log(body)
         updateData(body)
         setLoading(false)
       }

@@ -3,7 +3,6 @@ import { Container, Spinner, Rect } from './styles';
 import { Error } from '../Error';
 
 export const Loading = ({ status, error }) => {
-  console.log(error)
   return ReactDOM.createPortal(
     <Container status={status} error={error}>
       {

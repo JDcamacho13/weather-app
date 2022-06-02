@@ -9,12 +9,12 @@ export const Search = () => {
     return (
         <Container>
             <Button onClick={() => setToggleSearch(!toggleSearch)}>
-                <FaSearch />
+                <FaSearch size={20} />
             </Button>
             <List active={toggleSearch}>
                 {
                     toggleSearch &&
-                    <Autocomplete />
+                    <Autocomplete setToggleSearch={setToggleSearch} />
                 }
             </List>
         </Container>

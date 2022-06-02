@@ -8,7 +8,5 @@ export const getTimeFromTimezone = (timezone) => {
 
   const date = new Date(nd + 28800000)
 
-  console.log(date)
-  console.log(date.toLocaleString())
   return date
 }

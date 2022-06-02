@@ -5,7 +5,7 @@
                 "body": "linear-gradient(#023e8a, #8ecae6 60%, #e9c46a);", 
                 "cards": "#05609d61", 
                 "aside": "#2a6f97",
-                "progressBar": "#05609d"
+                "progressBar": "#00b4d8"
             }, 
             "images": {
                 "montains": "montains-morning",
@@ -27,7 +27,7 @@
                 "body": "linear-gradient(#219ebc, #9bf6ff);",
                 "cards": "#49505791", 
                 "aside": "#595959",
-                "progressBar": "#14213d"
+                "progressBar": "#52b69a"
             }, 
             "images": {
                 "montains": "montains-afternoon",
@@ -50,7 +50,7 @@
                 "body": "linear-gradient(#6930c3, #ffadad 70%, #f9c74f);",
                 "cards": "#f77f005e", 
                 "aside": "#6a040f",
-                "progressBar": "#d62828"
+                "progressBar": "#d00000"
             }, 
             "images": {
                 "montains": "montains-evening",

@@ -1,26 +1,25 @@
 import { useState, useEffect, useContext } from "react"
-import * as themes from '../theme/schema.json'
+import { data } from '../theme/schema.json'
 import { Context } from "../context/WeatherContext"
 
+const getTheme = (time, isDay) => {
+    const hour = new Date(time).getHours()
+    if (isDay) {
+        if (hour > 17) return "evening"
+        if (hour > 12) return "afternoon"
+        return "morning"
+    }
+    return 'night'
+}
+
 export const useTheme = () => {
-    const { time } = useContext(Context)
-    const [theme, setTheme] = useState(themes.data.morning)
+    const { time, isDay } = useContext(Context)
+    const [theme, setTheme] = useState(data.morning)
 
     useEffect(() => {
-        if (time.length > 0) {
-            const hour = new Date(time.replace('Z', '')).getHours();
-
-            console.log(time.replace('Z', ''))
-
-            if (hour > 18 || hour < 6) {
-                setTheme(themes.data.night)
-            } else if (hour > 17) {
-                setTheme(themes.data.evening)
-            } else if (hour > 11) {
-                setTheme(themes.data.afternoon)
-            } else {
-                setTheme(themes.data.morning)
-            }
+        if (time) {
+            const theme = getTheme(time, isDay)
+            setTheme(data[theme])
         }
     }, [time])
 

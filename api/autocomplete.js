@@ -5,31 +5,25 @@ export default async (req, res) => {
   const { searchText } = req.query;
 
   const options = {
-    method: "GET",
-    url: `http://api.geonames.org/searchJSON?q=${searchText}&maxRows=10&featureClass=P&username=jdcamacho`
+    method: 'GET',
+    url: 'https://weatherapi-com.p.rapidapi.com/search.json',
+    params: { q: searchText },
+    headers: {
+      'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com',
+      'X-RapidAPI-Key': process.env.RAPID_API_KEY
+    }
   };
 
   const request = await axios(options);
 
   const { data } = request;
 
-  const { geonames } = data;
-
-  const results = geonames.map(item => {
+  const results = data.map(item => {
     return {
       name: item.name,
-      country: getCountryName(item.countryCode),
-      countryCode: item.countryCode,
+      country: getCountryName(item.country),
     }
   });
 
-  const filteredResults = deleteDuplicated(results);
-
-  res.status(200).json(filteredResults);
-}
-
-function deleteDuplicated(inputArr) {
-  let obj = {};
-  const out = inputArr.filter(o => obj[o.name + o.country] ? false : obj[o.name + o.country] = true);
-  return out;
+  res.status(200).json(results);
 }

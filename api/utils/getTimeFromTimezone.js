@@ -6,7 +6,7 @@ export const getTimeFromTimezone = (timezone) => {
   var atlanta = utc + (1000 * timezone)
   const nd = new Date(atlanta).getTime()
 
-  const date = new Date(nd + 28800000)
+  const date = new Date(nd)
 
   return date
 }

@@ -289,7 +289,7 @@ const jsonCountries = {
       "code": "CG"
     },
     {
-      "name_en": "Congo, The Democratic Republic of the",
+      "name_en": "Congo",
       "name_es": "República Democrática del Congo",
       "dial_code": "+243",
       "code": "CD"
@@ -589,7 +589,7 @@ const jsonCountries = {
       "code": "ID"
     },
     {
-      "name_en": "Iran, Islamic Republic of",
+      "name_en": "Iran",
       "name_es": "Irán",
       "dial_code": "+98",
       "code": "IR"
@@ -667,13 +667,13 @@ const jsonCountries = {
       "code": "KI"
     },
     {
-      "name_en": "Korea, Democratic People's Republic of",
+      "name_en": "North Korea",
       "name_es": "Corea del Norte",
       "dial_code": "+850",
       "code": "KP"
     },
     {
-      "name_en": "Korea, Republic of",
+      "name_en": "South Korea",
       "name_es": "Corea del Sur",
       "dial_code": "+82",
       "code": "KR"
@@ -757,8 +757,8 @@ const jsonCountries = {
       "code": "MO"
     },
     {
-      "name_en": "Macedonia, The Former Yugoslav Republic of",
-      "name_es": "República de Macedonia",
+      "name_en": "Macedonia",
+      "name_es": "Macedonia",
       "dial_code": "+389",
       "code": "MK"
     },
@@ -841,7 +841,7 @@ const jsonCountries = {
       "code": "FM"
     },
     {
-      "name_en": "Moldova, Republic of",
+      "name_en": "Moldova",
       "name_es": "Moldavia",
       "dial_code": "+373",
       "code": "MD"
@@ -1279,7 +1279,7 @@ const jsonCountries = {
       "code": "TJ"
     },
     {
-      "name_en": "Tanzania, United Republic of",
+      "name_en": "Tanzania",
       "name_es": "Tanzania",
       "dial_code": "+255",
       "code": "TZ"
@@ -1399,7 +1399,7 @@ const jsonCountries = {
       "code": "VU"
     },
     {
-      "name_en": "Venezuela, Bolivarian Republic of",
+      "name_en": "Venezuela",
       "name_es": "Venezuela",
       "dial_code": "+58",
       "code": "VE"
@@ -1457,6 +1457,6 @@ const jsonCountries = {
 
 export const getCountryName = (code) => {
   const { countries } = jsonCountries
-  const country = countries.find(country => country.code === code)
-  return country.name_es
+  const country = countries.find(country => country.name_en === code)
+  return country ? country.name_es : code
 }

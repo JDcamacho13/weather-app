@@ -48,7 +48,8 @@ export default async (req, res) => {
       weatherForecast: [],
       country: '',
       city: '',
-      time: ''
+      time: '',
+      is_day: ''
     }
 
     const { latitude, longitude } = req.query
@@ -59,8 +60,7 @@ export default async (req, res) => {
     results.country = country
     results.city = city
     results.time = time
-
-    console.log(weather)
+    results.is_day = is_day
 
     results.weatherToday = {
       icon: is_day ? weather.icon + "d" : weather.icon + "n",
@@ -73,7 +73,7 @@ export default async (req, res) => {
     }
 
     results.weatherForecast = forecast.map(day => ({
-      date: day.date,
+      date: day.date + " " + "12:00:00",
       icon: day.weather.icon + "d",
       weather: day.weather.day_es,
       temp: day.temp,

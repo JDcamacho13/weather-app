@@ -1,45 +1,45 @@
 import { getCountryName } from "./utils/getCountryName";
-import { getTimeFromTimezone } from "./utils/getTimeFromTimezone";
+import { getTraducedData } from "./utils/getTraducedData";
 import responseHandler from "./utils/responseHandler";
 
-const getForecast = async (city) => {
-  const optionsFuture = {
-    url: 'https://community-open-weather-map.p.rapidapi.com/forecast',
+
+const getWeather = async ({ city }) => {
+  const options = {
+    url: 'https://weatherapi-com.p.rapidapi.com/forecast.json',
     params: {
       q: city,
-      units: 'metric',
-      lang: 'sp'
+      days: '5'
     },
-    host: 'community-open-weather-map.p.rapidapi.com'
+    host: 'weatherapi-com.p.rapidapi.com'
   };
-
-  const requestFuture = await responseHandler(optionsFuture)
-
-  const { name, country } = requestFuture.data.city
-
-  const dataList = requestFuture.data.list
-
-  return {
-    name,
-    country,
-    dataList
-  }
-}
-
-const getWeather = async ({ name, country }) => {
-  const options = {
-    host: 'community-open-weather-map.p.rapidapi.com',
-    params: {
-      q: `${name},${country}`,
-      units: 'metric',
-      lang: 'sp'
-    },
-    url: 'https://community-open-weather-map.p.rapidapi.com/weather'
-  }
 
   const request = await responseHandler(options)
 
-  return request.data
+  const { current, location, forecast } = request.data
+
+  const obj = {
+    city: location.name,
+    country: location.country,
+    time: location.localtime,
+    weather: getTraducedData(current.condition.code),
+    temp: current.temp_c,
+    wind: current.wind_kph,
+    humidity: current.humidity,
+    visibility: current.vis_km,
+    pressure: current.pressure_mb,
+    is_day: current.is_day,
+    forecast: forecast.forecastday.map(day => ({
+      date: day.date,
+      weather: getTraducedData(day.day.condition.code),
+      temp: day.day.avgtemp_c,
+      wind: day.day.maxwind_kph,
+      humidity: day.day.avghumidity,
+      visibility: day.day.avgvis_km,
+      pressure: day.day.avgpressure_mb,
+    }))
+  }
+
+  return obj
 }
 
 export default async (req, res) => {
@@ -49,59 +49,39 @@ export default async (req, res) => {
       weatherForecast: [],
       country: '',
       city: '',
-      time: ''
+      time: '',
+      is_day: ''
     }
 
     const { city } = req.query
 
-    const { name, country, dataList } = await getForecast(city)
-
-
-
-    const { weather, main, wind, visibility, timezone, dt } = await getWeather({ name, country })
-
-    results.weatherToday = {
-      id: weather[0].id,
-      icon: weather[0].icon,
-      weather: weather[0].description,
-      temp: main.temp,
-      wind,
-      humidity: main.humidity,
-      visibility: visibility,
-      pressure: main.pressure,
-    }
-
-    const today = getTimeFromTimezone(timezone)
-
-    let year = today.getFullYear();
-    let month = ("0" + (today.getMonth() + 1)).slice(-2);
-    let date = ("0" + today.getDate()).slice(-2);
-    let date_time = year + "-" + month + "-" + date;
-
-    const data = dataList.filter(item => {
-      return item.dt_txt.includes('12:00:00') && !item.dt_txt.includes(date_time)
-    })
-
-    results.weatherForecast = data.map(item => {
-      return {
-        id: item.weather[0].id,
-        icon: item.weather[0].icon,
-        weather: item.weather[0].description,
-        temp: item.main.temp,
-        temp_min: item.main.temp_min,
-        temp_max: item.main.temp_max,
-        wind: item.wind,
-        humidity: item.main.humidity,
-        visibility: item.visibility,
-        pressure: item.main.pressure,
-        date: item.dt_txt
-      }
-    })
+    const { country, time, weather, is_day, temp, wind, humidity, visibility, pressure, forecast } = await getWeather({ city })
 
     results.country = getCountryName(country)
-    results.city = name
+    results.city = city
+    results.time = time
+    results.is_day = is_day
 
-    results.time = today
+    results.weatherToday = {
+      icon: is_day ? weather.icon + "d" : weather.icon + "n",
+      weather: is_day ? weather.day_es : weather.night_es,
+      temp: temp,
+      wind,
+      humidity,
+      visibility,
+      pressure
+    }
+
+    results.weatherForecast = forecast.map(day => ({
+      date: day.date + " " + "12:00:00",
+      icon: day.weather.icon + "d",
+      weather: day.weather.day_es,
+      temp: day.temp,
+      wind: day.wind,
+      humidity: day.humidity,
+      visibility: day.visibility,
+      pressure: day.pressure
+    }))
 
     res.status(200).json(results)
   } catch (err) {

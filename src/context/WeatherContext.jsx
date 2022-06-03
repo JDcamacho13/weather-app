@@ -4,6 +4,7 @@ export const Context = createContext()
 
 const Provider = ({ children }) => {
   const [country, setCountry] = useState({})
+  const [isDay, setIsDay] = useState(true)
   const [weatherToday, setWeatherToday] = useState({})
   const [weatherForecast, setWeatherForecast] = useState([])
   const [city, setCity] = useState({})
@@ -16,6 +17,7 @@ const Provider = ({ children }) => {
     setWeatherForecast(data.weatherForecast)
     setCity(data.city)
     setTime(data.time)
+    setIsDay(data.is_day)
   }
 
   const convertTemp = (temp) => {
@@ -36,7 +38,8 @@ const Provider = ({ children }) => {
         unit,
         convertTemp,
         setUnit,
-        updateData
+        updateData,
+        isDay
       }}
     >
       {children}

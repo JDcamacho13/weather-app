@@ -42,13 +42,11 @@ export const Autocomplete = ({ setToggleSearch }) => {
     setSearch(e.target.value);
   }
 
-  const fecthNewData = async (e) => {
-    e.preventDefault();
+  const fecthNewData = async (city) => {
     setSugesstions([]);
     setShowSugesstions(false);
     setLoadingData(true);
 
-    const city = search;
     try {
       const req = await fetch(`/api/weatherQuery?city=${city}`)
       const data = await req.json()
@@ -67,15 +65,16 @@ export const Autocomplete = ({ setToggleSearch }) => {
     setLoadingData(false);
   }
 
-  const onclick = (e) => {
-    setSearch(e.target.getAttribute('data-value'));
+  const onclick = (city) => {
+    setSearch(city);
     setSugesstions([]);
     setShowSugesstions(false);
-    fecthNewData(e)
+    fecthNewData(city)
   }
 
   const onsubmit = (e) => {
-    fecthNewData(e);
+    e.preventDefault();
+    fecthNewData(search);
   }
 
   return (
@@ -92,7 +91,7 @@ export const Autocomplete = ({ setToggleSearch }) => {
             </li>
           }
           {sugesstions.map((city, index) => (
-            <SugestionItem onClick={onclick} key={index} data-value={`${city.name},${city.countryCode.toLowerCase()}`} >
+            <SugestionItem onClick={(e) => onclick(city.name)} key={index}  >
               {city.name}, {city.country}
             </SugestionItem>
           ))}

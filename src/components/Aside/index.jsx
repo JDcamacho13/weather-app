@@ -19,7 +19,7 @@ export const Aside = () => {
         <Container>
             <PronosticList pronostic={weatherForecast} />
             <Title>Destacados de hoy</Title>
-            <HightlightsCard name='Viento' value={wind.speed} unit='kph' image='wind' />
+            <HightlightsCard name='Viento' value={wind} unit='kph' image='wind' />
             <HightlightsCard name='Humedad' value={humidity} unit='%' barProgress={true} image='humedity' />
             <HightlightsCard name='Visibilidad' value={visibilityValue[0]} unit={visibilityValue[1]} image='visibility' />
             <HightlightsCard name='Presion de aire' value={pressure} unit='mb' image='pressure' />

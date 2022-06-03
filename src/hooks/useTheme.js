@@ -4,21 +4,24 @@ import { Context } from "../context/WeatherContext"
 
 export const useTheme = () => {
     const { time } = useContext(Context)
-    const [theme, setTheme] = useState(themes)
+    const [theme, setTheme] = useState(themes.data.morning)
 
     useEffect(() => {
-        const hour = new Date(time).getHours();
+        if (time.length > 0) {
+            const hour = new Date(time.replace('Z', '')).getHours();
 
-        if (hour > 18 || hour < 6) {
-            setTheme(themes.data.night)
-        } else if (hour > 17) {
-            setTheme(themes.data.evening)
-        } else if (hour > 11) {
-            setTheme(themes.data.afternoon)
-        } else {
-            setTheme(themes.data.morning)
+            console.log(time.replace('Z', ''))
+
+            if (hour > 18 || hour < 6) {
+                setTheme(themes.data.night)
+            } else if (hour > 17) {
+                setTheme(themes.data.evening)
+            } else if (hour > 11) {
+                setTheme(themes.data.afternoon)
+            } else {
+                setTheme(themes.data.morning)
+            }
         }
-
     }, [time])
 
     return [theme, setTheme]
